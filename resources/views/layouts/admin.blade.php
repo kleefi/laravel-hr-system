@@ -9,9 +9,12 @@
 </head>
 
 <body>
-    <x-navbar></x-navbar>
-    <!-- <x-sidebar-admin></x-sidebar-admin> -->
-    <x-sidebar-user></x-sidebar-user>
+    <x-navbar />
+    @hasrole('admin')
+    <x-sidebar-admin />
+    @elserole('employee')
+    <x-sidebar-user />
+    @endhasrole
     <div class="p-8 mt-16 sm:ml-64">
         @yield('content')
     </div>
