@@ -9,9 +9,9 @@ Route::redirect('/', '/login');
 // employee route
 Route::middleware('auth')->prefix('/')->group(function () {
     Route::resource('/dashboard', DashboardController::class);
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/settings', [ProfileController::class, 'edit'])->name('setting.edit');
+    Route::patch('/settings', [ProfileController::class, 'update'])->name('setting.update');
+    Route::delete('/settings', [ProfileController::class, 'destroy'])->name('setting.destroy');
 });
 // admin route
 require __DIR__ . '/auth.php';

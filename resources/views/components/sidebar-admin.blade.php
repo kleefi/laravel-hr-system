@@ -4,17 +4,16 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
 
-            {{-- Dashboard --}}
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('dashboard')
+                <a href="{{ route('dashboard.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('dashboard')
                     ])>
                     <i class="fa-solid fa-chart-pie w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Dashboard</span>
                 </a>
             </li>
 
-            {{-- Employees --}}
             <li>
                 <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
                     , 'bg-gray-200'=> request()->is('employees*')
@@ -24,7 +23,6 @@
                 </a>
             </li>
 
-            {{-- Leave Requests --}}
             <li>
                 <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
                     , 'bg-gray-200'=> request()->is('leave-requests*')
@@ -34,7 +32,6 @@
                 </a>
             </li>
 
-            {{-- Approvals --}}
             <li>
                 <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
                     , 'bg-gray-200'=> request()->is('approvals*')
@@ -44,7 +41,6 @@
                 </a>
             </li>
 
-            {{-- Export --}}
             <li>
                 <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
                     , 'bg-gray-200'=> request()->is('export*')
@@ -54,7 +50,6 @@
                 </a>
             </li>
 
-            {{-- Notifications (optional) --}}
             <li>
                 <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
                     , 'bg-gray-200'=> request()->is('notifications*')
@@ -64,17 +59,16 @@
                 </a>
             </li>
 
-            {{-- Account Settings --}}
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('settings')
+                <a href="{{ route('setting.edit') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('settings*')
                     ])>
                     <i class="fa-solid fa-gear w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Account Settings</span>
                 </a>
             </li>
 
-            {{-- Logout --}}
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
