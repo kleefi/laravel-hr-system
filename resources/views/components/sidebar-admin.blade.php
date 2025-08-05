@@ -5,9 +5,9 @@
         <ul class="space-y-2 font-medium">
 
             <li>
-                <a href="{{ route('dashboard.index') }}"
+                <a href="{{ route('admin.dashboard.index') }}"
                     @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
-                    request()->is('dashboard')
+                    request()->is('admin/dashboard')
                     ])>
                     <i class="fa-solid fa-chart-pie w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Dashboard</span>
@@ -15,8 +15,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('employees*')
+                <a href="{{ route('admin.employees.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('admin/employees*')
                     ])>
                     <i class="fa-solid fa-users w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Employees</span>
@@ -24,8 +25,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('leave-requests*')
+                <a href="{{ route('admin.leave-requests.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('admin/leave-requests*')
                     ])>
                     <i class="fa-solid fa-file-lines w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Leave Requests</span>
@@ -33,8 +35,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('approvals*')
+                <a href="{{ route('admin.approvals.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('admin/approvals*')
                     ])>
                     <i class="fa-solid fa-circle-check w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Approvals</span>
@@ -42,8 +45,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('export*')
+                <a href="{{ route('admin.export.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('admin/export*')
                     ])>
                     <i class="fa-solid fa-file-export w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Export</span>
@@ -51,8 +55,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('notifications*')
+                <a href="{{ route('admin.notifications.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('admin/notifications*')
                     ])>
                     <i class="fa-solid fa-bell w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Notifications</span>

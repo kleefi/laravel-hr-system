@@ -5,9 +5,9 @@
         <ul class="space-y-2 font-medium">
 
             <li>
-                <a href={{ route('dashboard.index') }}
+                <a href="{{ route('employee.dashboard.index') }}"
                     @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
-                    request()->is('dashboard')
+                    request()->is('employee/dashboard')
                     ])>
                     <i class="fa-solid fa-chart-pie w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Dashboard</span>
@@ -15,9 +15,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=>
-                    request()->is('profile')
+                <a href="{{ route('employee.my-profile.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('employee/my-profile*')
                     ])>
                     <i class="fa-solid fa-user w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">My Profile</span>
@@ -25,8 +25,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('leaves')
+                <a href="{{ route('employee.my-leave.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('employee/my-leave*')
                     ])>
                     <i class="fa-solid fa-file-lines w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">My Leave Requests</span>
@@ -34,8 +35,9 @@
             </li>
 
             <li>
-                <a href="#" @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group'
-                    , 'bg-gray-200'=> request()->is('leaves/apply')
+                <a href="{{ route('employee.apply-leave.index') }}"
+                    @class([ 'flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group' , 'bg-gray-200'=>
+                    request()->is('employee/apply-leave*')
                     ])>
                     <i class="fa-solid fa-circle-plus w-5 h-5 text-gray-500 group-hover:text-gray-900"></i>
                     <span class="ms-3">Apply for Leave</span>

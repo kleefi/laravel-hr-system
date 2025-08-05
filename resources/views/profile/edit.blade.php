@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.main')
 @section('title','My Profile')
 @section('content')
 @include('profile.partials.update-profile-information-form')
