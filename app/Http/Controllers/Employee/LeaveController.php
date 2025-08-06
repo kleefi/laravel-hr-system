@@ -26,8 +26,8 @@ class LeaveController extends Controller
         // Ambil semua cuti milik employee tersebut
         $leaves = LeaveRequest::where('employee_id', $employee->id)
             ->latest()
-            ->get();
-        $leaves = LeaveRequest::paginate(10);
+            ->paginate(10);
+        // $leaves = LeaveRequest::paginate(10);
         return view('employee.my-leave', compact('leaves'));
     }
     public function formLeave()
