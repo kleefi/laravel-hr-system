@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MyLeaveRequests extends Controller
+class MyProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('employee.my-leave');
+        return view('employee.my-profile');
     }
 
     /**

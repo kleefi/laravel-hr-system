@@ -20,15 +20,15 @@ class RolePermissionSeeder extends Seeder
 
         // Assign role ke user
         $admin = User::firstOrCreate(
-            ['email' => 'admin@example.com'],
+            ['email' => 'decharvi.charles@gmail.com'],
             ['name' => 'Admin', 'password' => bcrypt('asdfasdf')]
         );
         $admin->assignRole($adminRole);
 
-        $employee = User::firstOrCreate(
-            ['email' => 'employee@example.com'],
-            ['name' => 'Employee', 'password' => bcrypt('asdfasdf')]
-        );
-        $employee->assignRole($employeeRole);
+        // $employee = User::firstOrCreate(
+        //     ['email' => 'employee@example.com'],
+        //     ['name' => 'Employee', 'password' => bcrypt('asdfasdf')]
+        // );
+        // $employee->assignRole($employeeRole);
     }
 }

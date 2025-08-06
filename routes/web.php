@@ -7,9 +7,8 @@ use App\Http\Controllers\Admin\LeaveRequestController as AdminLeaveRequestContro
 use App\Http\Controllers\Admin\NotificationController as AdminNotificationController;
 use App\Http\Controllers\Admin\EmployeeController as AdminEmployeeController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
-use App\Http\Controllers\Employee\ApplyForLeave;
-use App\Http\Controllers\Employee\MyLeaveRequests;
-use App\Http\Controllers\Employee\MyProfile;
+use App\Http\Controllers\Employee\LeaveController;
+use App\Http\Controllers\Employee\MyProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +22,10 @@ Route::middleware(['auth'])->prefix('/')->group(function () {
 // employee route
 Route::middleware(['auth', 'role:employee'])->prefix('/employee')->name('employee.')->group(function () {
     Route::resource('/dashboard', EmployeeDashboardController::class);
-    Route::resource('/my-profile', MyProfile::class);
-    Route::resource('/my-leave', MyLeaveRequests::class);
-    Route::resource('/apply-leave', ApplyForLeave::class);
+    Route::resource('/my-profile', MyProfileController::class);
+    Route::get('/my-leave',  [LeaveController::class, 'index'])->name('my-leave.index');
+    Route::get('/apply-leave', [LeaveController::class, 'formLeave'])->name('apply-leave.index');
+    Route::post('/apply-leave', [LeaveController::class, 'storeLeave'])->name('apply-leave.store');
 });
 // admin route
 Route::middleware(['auth', 'role:admin'])->prefix('/admin')->name('admin.')->group(function () {
