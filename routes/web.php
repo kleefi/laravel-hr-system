@@ -29,11 +29,12 @@ Route::middleware(['auth', 'role:employee'])->prefix('/employee')->name('employe
 });
 // admin route
 Route::middleware(['auth', 'role:admin'])->prefix('/admin')->name('admin.')->group(function () {
-    Route::resource('/dashboard', AdminDashboardController::class);
-    Route::resource('/employees', AdminEmployeeController::class);
-    Route::resource('/leave-requests', AdminLeaveRequestController::class);
-    Route::resource('/approvals', AdminApprovalController::class);
-    Route::resource('/export', AdminExportController::class);
-    Route::resource('/notifications', AdminNotificationController::class);
+    Route::resource('dashboard', AdminDashboardController::class);
+    Route::resource('employees', AdminEmployeeController::class);
+    Route::resource('leave-requests', AdminLeaveRequestController::class);
+    Route::resource('approvals', AdminApprovalController::class);
+    Route::resource('export', AdminExportController::class);
+    Route::resource('notifications', AdminNotificationController::class);
 });
+
 require __DIR__ . '/auth.php';

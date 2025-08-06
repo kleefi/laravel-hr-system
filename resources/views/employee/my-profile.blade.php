@@ -13,10 +13,16 @@
 
     <div class="bg-white shadow-md rounded-lg p-6">
         <div class="flex items-center space-x-4 mb-6">
+            @if($employee->photo)
+            <img src="{{ asset('storage/' . $employee->photo) }}" alt="{{ $employee->user->name }}"
+                class="w-20 h-20 rounded-full object-cover">
+            @else
             <div
                 class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-3xl font-bold">
-                {{ strtoupper(substr($user->name, 0, 1)) }}
+                {{ strtoupper(substr($employee->user->name, 0, 1)) }}
             </div>
+            @endif
+
             <div>
                 <h2 class="text-xl font-semibold text-gray-800">{{ $user->name }}</h2>
                 <p class="text-gray-600">{{ $user->email }}</p>

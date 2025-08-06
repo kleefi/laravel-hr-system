@@ -14,7 +14,7 @@
     @if($leaves->isEmpty())
     <p class="text-gray-500">You have not submitted any leave requests yet.</p>
     @else
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto bg-white shadow rounded-lg">
         <table class="w-full text-sm text-left text-gray-700">
             <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                 <tr class="border-b">
