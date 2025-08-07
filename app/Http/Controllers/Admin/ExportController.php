@@ -2,64 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\LeaveRequest;
+use App\Exports\LeaveRequestExport;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.export');
+        $leaves = LeaveRequest::with('employee.user')->whereIn('status', ['rejected', 'pending', 'approved'])->paginate(10);
+        return view('admin.export', compact('leaves'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function export(Request $request)
     {
-        //
-    }
+        $status = $request->input('status');
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return Excel::download(
+            new LeaveRequestExport($status, $startDate, $endDate),
+            'leave_requests.xlsx'
+        );
     }
 }

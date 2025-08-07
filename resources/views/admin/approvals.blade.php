@@ -23,7 +23,7 @@
                     <th class="px-4 py-2">Start Date</th>
                     <th class="px-4 py-2">End Date</th>
                     <th class="px-4 py-2">Total Days</th>
-                    <th class="px-4 py-2">Approvaed By</th>
+                    <th class="px-4 py-2">Approved By</th>
                     <th class="px-4 py-2">Status</th>
                     <th class="px-4 py-2">Reason</th>
                     <th class="px-4 py-2">Action</th>

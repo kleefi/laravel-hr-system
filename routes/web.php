@@ -33,7 +33,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->name('admin.')->gro
     Route::resource('employees', AdminEmployeeController::class);
     Route::resource('leave-requests', AdminLeaveRequestController::class);
     Route::resource('approvals', AdminApprovalController::class);
-    Route::resource('export', AdminExportController::class);
+    Route::get('export', [AdminExportController::class, 'index'])->name('export.index');
+    Route::get('/export/download', [AdminExportController::class, 'export'])->name('export.download');
     Route::resource('notifications', AdminNotificationController::class);
 });
 
