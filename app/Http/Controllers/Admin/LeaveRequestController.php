@@ -36,14 +36,4 @@ class LeaveRequestController extends Controller
 
         return redirect()->route('admin.leave-requests.index')->with('success', 'Leave request updated.');
     }
-
-
-    public function destroy(string $id)
-    {
-        $leave = LeaveRequest::findOrFail($id);
-        $leave->delete();
-
-        return redirect()->route('admin.leave-requests.index')
-            ->with('success', 'Leave request deleted successfully.');
-    }
 }

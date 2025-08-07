@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
+use App\Mail\LeaveRequestStatusUpdated;
+use Illuminate\Support\Facades\Mail;
+use App\Models\EmailLog;
 
 class ApprovalController extends Controller
 {
@@ -33,7 +36,33 @@ class ApprovalController extends Controller
         }
 
         $leave->save();
+        // Kirim email notifikasi ke pengaju
+        $employeeEmail = $leave->employee->user->email ?? null;
+        if ($employeeEmail) {
+            try {
+                // Buat mailable
+                $mailable = new LeaveRequestStatusUpdated($leave);
 
+                // Kirim email
+                Mail::to($employeeEmail)->send($mailable);
+
+                // Simpan log email berhasil
+                EmailLog::create([
+                    'recipient_email' => $employeeEmail,
+                    'subject' => $mailable->envelope()->subject ?? 'Leave Request Status Updated',
+                    'body' => $mailable->render(),
+                    'status' => 'sent',
+                ]);
+            } catch (\Exception $e) {
+                // Simpan log email gagal
+                EmailLog::create([
+                    'recipient_email' => $employeeEmail,
+                    'subject' => 'Leave Request Status Updated',
+                    'body' => 'Failed to send email: ' . $e->getMessage(),
+                    'status' => 'failed',
+                ]);
+            }
+        }
         return redirect()->route('admin.approvals.index')->with('success', 'Leave request updated.');
     }
     public function destroy(string $id)
