@@ -26,7 +26,7 @@
                     <th class="px-4 py-2">Approvaed By</th>
                     <th class="px-4 py-2">Status</th>
                     <th class="px-4 py-2">Reason</th>
-                    <th class="px-4 py-2">Action</th>
+                    <th class="px-4 py-2 hidden">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +45,7 @@
                         @endphp
                         {{ $workdays }} day(s)
                     </td>
-                    <td>{{ $leave->approvedBy?->name ?? '-' }}</td>
+                    <td class="px-4 py-2">{{ $leave->approvedBy?->name ?? '-' }}</td>
 
                     <td class="px-4 py-2">
                         <span class="@if($leave->status == 'approved') text-green-600
@@ -55,7 +55,7 @@
                         </span>
                     </td>
                     <td class="px-4 py-2">{{ $leave->reason }}</td>
-                    <td class="px-4 py-2 flex gap-2 items-center">
+                    <td class="hidden px-4 py-2 flex gap-2 items-center">
                         <button @click="setEditData('{{ $leave->id }}', '{{ $leave->status }}')"
                             class="text-blue-600 hover:underline text-sm">
                             Edit

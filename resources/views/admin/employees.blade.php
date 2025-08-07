@@ -65,7 +65,7 @@
                     <td class="px-4 py-2">
                         {{ $employee->created_at->format('d-m-Y') }}
                     </td>
-                    <td class="px-4 py-2 flex gap-2 items-center">
+                    <td class="px-4 py-2 flex gap-2 items-center mt-2">
                         <button @click="editOpen = true; setEditData(
         '{{ $employee->id }}',
         '{{ $employee->user->name }}',

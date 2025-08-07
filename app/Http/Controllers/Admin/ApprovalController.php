@@ -3,63 +3,45 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
 
 class ApprovalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('admin.approvals');
+        $leaves = LeaveRequest::with('employee.user')->whereIn('status', ['rejected', 'pending'])->paginate(10);
+        return view('admin.approvals', compact('leaves'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $request->validate([
+            'status' => 'required|in:pending,approved,rejected',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        $leave = LeaveRequest::findOrFail($id);
+
+        $leave->status = $request->status;
+
+        if ($request->status !== 'pending') {
+            $leave->approved_by = auth()->id();
+            $leave->approved_at = now();
+        } else {
+            $leave->approved_by = null;
+            $leave->approved_at = null;
+        }
+
+        $leave->save();
+
+        return redirect()->route('admin.approvals.index')->with('success', 'Leave request updated.');
+    }
     public function destroy(string $id)
     {
-        //
+        $leave = LeaveRequest::findOrFail($id);
+        $leave->delete();
+
+        return redirect()->route('admin.approvals.index')
+            ->with('success', 'Leave request deleted successfully.');
     }
 }
