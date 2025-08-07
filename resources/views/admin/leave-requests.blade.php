@@ -1,6 +1,7 @@
 @extends('layouts.main')
-@section('title','Leave Requests')@section('content')
-<div class=" mx-auto p-6">
+@section('title','Leave Requests')
+@section('content')
+<div class="mx-auto p-6">
     <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold text-gray-800">Leave Requests</h1>
     </div>
@@ -13,6 +14,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                 <tr class="border-b">
                     <th class="px-4 py-2">#</th>
+                    <th class="px-4 py-2">Name</th>
                     <th class="px-4 py-2">Start Date</th>
                     <th class="px-4 py-2">End Date</th>
                     <th class="px-4 py-2">Total Days</th>
@@ -24,6 +26,7 @@
                 @foreach($leaves as $index => $leave)
                 <tr class="border-b">
                     <td class="px-4 py-2">{{ $index + 1 }}</td>
+                    <td class="px-4 py-2">{{ $leave->employee->user->name ??'-'}}</td>
                     <td class="px-4 py-2">{{ \Carbon\Carbon::parse($leave->start_date)->format('d-m-Y') }}</td>
                     <td class="px-4 py-2">{{ \Carbon\Carbon::parse($leave->end_date)->format('d-m-Y') }}</td>
                     <td class="px-4 py-2">

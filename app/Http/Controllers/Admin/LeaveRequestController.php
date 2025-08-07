@@ -10,7 +10,7 @@ class LeaveRequestController extends Controller
 {
     public function index()
     {
-        $leaves = LeaveRequest::paginate(10);
+        $leaves = LeaveRequest::with('employee.user')->paginate(10);
         return view('admin.leave-requests', compact('leaves'));
     }
     public function create()

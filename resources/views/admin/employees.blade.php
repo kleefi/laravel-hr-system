@@ -8,7 +8,7 @@
     {{session('success')}}
 </div>
 @endif
-<div x-data="employeeModal()" class="max-w-6xl mx-auto p-6">
+<div x-data="employeeModal()" class="mx-auto p-6">
     <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold text-gray-800">Employee List</h1>
         <button @click="open = true"
